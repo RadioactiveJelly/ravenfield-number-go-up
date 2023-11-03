@@ -16,7 +16,10 @@ function NumberGoUp:Start()
 
 	if self.script.modSaveData then
 		self:LoadData()
+	else
+		print("<color=red>Save data is nil!</color>")
 	end
+	
 
 	self.hasMatchEnded = false
 	GameEvents.onMatchEnd.AddListener(self,"OnMatchEnd")
@@ -95,8 +98,9 @@ end
 function NumberGoUp:OnMatchEnd(team)
 	if self.script.modSaveData then
 		self:SaveData()
-		self.scoreSystem:UnsubscribeToScoreEvent(self)
+		self.scoreSystem.self:UnsubscribeToScoreEvent(self)
 	end
+	self.hasMatchEnded = true
 end
 
 function NumberGoUp:SaveData()
