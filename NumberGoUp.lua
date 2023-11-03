@@ -8,7 +8,6 @@ function NumberGoUp:Awake()
 end
 
 function NumberGoUp:Start()
-	-- Run when behaviour is created
 	self.script.StartCoroutine(self:DelayedStart())
 
 	self.baseXP = 1500
@@ -23,6 +22,7 @@ function NumberGoUp:Start()
 	GameEvents.onMatchEnd.AddListener(self,"OnMatchEnd")
 end
 
+--Score system compatibility
 function NumberGoUp:DelayedStart()
 	return function()
 		coroutine.yield(WaitForSeconds(0.1))
